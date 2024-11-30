@@ -5,6 +5,7 @@ import {QueryClient, QueryClientProvider} from 'react-query';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './src/screens/Home/Home';
 import SplashScreen from './src/components/SplashScreen';
+import {StatusBar} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 const queryClient = new QueryClient();
@@ -12,6 +13,7 @@ const queryClient = new QueryClient();
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
+      <StatusBar backgroundColor="transparent" translucent={true} />
       <NavigationContainer>
         <Stack.Navigator initialRouteName="SplashScreen">
           <Stack.Screen

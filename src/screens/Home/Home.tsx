@@ -1,23 +1,32 @@
-import {StyleSheet, SafeAreaView, Text} from 'react-native';
+import React from 'react';
+import {
+  DescriptionText,
+  DescriptionWrapper,
+  HomeWrapper,
+  LogoBox,
+} from './Home.Styles';
+import Logo from '@/components/Logo';
+import Margin from '@/components/Margin';
+import ImageWrapper from '@/components/ImageWrapper';
+import DescriptionImage from '@/assets/images/fireDevelopers.jpg';
+import Button from '@/components/Button';
 
-export default function Home() {
+const Home = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.customFont}>저는 지마켓 폰트입니다</Text>
-      {/* 나머지 Text 컴포넌트들 */}
-    </SafeAreaView>
+    <HomeWrapper>
+      <LogoBox>
+        <Logo widthPercentage={60} heightPercentage={10} />
+      </LogoBox>
+      <Margin height={2} />
+      <DescriptionWrapper>
+        <ImageWrapper src={DescriptionImage} width={50} height={25} />
+        <Margin height={5} />
+        <DescriptionText>개발자들을 위한</DescriptionText>
+        <DescriptionText>특별한 소개팅 플랫폼입니다.</DescriptionText>
+      </DescriptionWrapper>
+      <Button title="안녕하세요" />
+    </HomeWrapper>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center', // 수직 중앙 정렬
-    alignItems: 'center', // 수평 중앙 정렬
-    backgroundColor: '#fff', // 배경색 추가
-  },
-  customFont: {
-    fontFamily: 'GmarketSansTTFMedium', // 텍스트에 폰트 적용
-    fontSize: 20, // 폰트 크기 조정
-  },
-});
+export default Home;

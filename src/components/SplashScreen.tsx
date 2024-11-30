@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import styled from 'styled-components/native';
 import LottieView from 'lottie-react-native';
 import {useNavi} from '@/hooks/useNavi';
 import {brandColor} from '@/constants';
-import {responsiveWidth} from '@/utils/responsive';
+import Logo from './Logo';
 
 const SplashWrapper = styled(View)`
   flex: 1;
@@ -12,11 +12,6 @@ const SplashWrapper = styled(View)`
   align-items: center;
   background-color: ${brandColor};
   transition: all 1;
-`;
-
-const Title = styled(Text)`
-  color: #4b3c28;
-  font-size: ${responsiveWidth(20)}px;
 `;
 
 const LottieStyled = styled(LottieView)`
@@ -42,7 +37,7 @@ const SplashScreen = () => {
         autoPlay
         loop
       />
-      <Title>모닥불</Title>
+      <Logo widthPercentage={70} heightPercentage={10} />
     </SplashWrapper>
   );
 };
