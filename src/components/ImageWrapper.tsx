@@ -17,7 +17,7 @@ const ImageContainer = styled(View)<ImageContainerProps>`
   width: ${props => responsiveWidth(props.width || 10)}px;
   justify-content: center;
   align-items: center;
-  border-radius: ${responsiveWidth(1)}px; /* 반응형 border-radius */
+  border-radius: ${responsiveWidth(6)}px;
   overflow: hidden;
 `;
 

@@ -1,45 +1,45 @@
-import {subBrandColor} from '@/constants';
+import {defaultFont, fontColor, subBrandColor} from '@/constants';
+import {responsiveHeight, responsiveWidth} from '@/utils/responsive';
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import {Button as PaperButton, ActivityIndicator} from 'react-native-paper';
+import {Button as CustomButton} from 'react-native-paper';
+import styled from 'styled-components/native';
 
-interface CustomButtonProps {
-  title: string; // 버튼 텍스트
-  onPress?: () => void; // 버튼 클릭 핸들러
-  loading?: boolean; // 로딩 상태
-  color?: string; // 버튼 색상
-  style?: object; // 추가 스타일
+const StyledButton = styled(CustomButton)`
+  width: 100%;
+  height: ${responsiveHeight(5)}px;
+  border-radius: ${responsiveWidth(6)}px;
+  font-family: GmarketSansTTFMedium;
+`;
+interface ButtonProps {
+  title: string;
+  onPress?: () => void;
+  icon?: string;
+  disabled?: boolean;
+  isLoading?: boolean;
+  buttonColor?: string;
 }
 
-const Button: React.FC<CustomButtonProps> = ({
+const Button = ({
   title,
   onPress,
-  loading = false,
-  color = subBrandColor,
-  style,
-}) => {
+  icon,
+  disabled,
+  isLoading,
+  buttonColor,
+}: ButtonProps) => {
   return (
-    <View style={styles.container}>
-      <PaperButton
-        mode="contained"
-        onPress={onPress}
-        loading={loading}
-        disabled={loading}
-        style={[styles.button, style, {backgroundColor: color}]}>
-        {loading ? <ActivityIndicator color="#fff" /> : title}
-      </PaperButton>
-    </View>
+    <StyledButton
+      icon={icon}
+      onPress={onPress}
+      disabled={disabled}
+      buttonColor={buttonColor ? buttonColor : subBrandColor}
+      textColor={fontColor}
+      mode="contained"
+      labelStyle={{fontFamily: `${defaultFont}`}}
+      loading={isLoading}>
+      {title}
+    </StyledButton>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    margin: 20,
-  },
-  button: {
-    padding: 10,
-    borderRadius: 10 * 10,
-  },
-});
 
 export default Button;

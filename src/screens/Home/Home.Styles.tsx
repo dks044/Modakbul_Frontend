@@ -1,14 +1,23 @@
-import {brandColor} from '@/constants';
+import {blackColor, brandColor} from '@/constants';
 import {responsiveHeight, responsiveWidth} from '@/utils/responsive';
 import {SafeAreaView, Text, View} from 'react-native';
 import styled from 'styled-components/native';
 
 export const HomeWrapper = styled(SafeAreaView)`
   flex: 1;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
   background-color: ${brandColor};
-  padding-top: ${responsiveHeight(10)}px;
+  padding-top: ${responsiveHeight(1)}px;
   padding-left: ${responsiveWidth(5)}px;
   padding-right: ${responsiveWidth(5)}px;
+`;
+
+export const HomeSection = styled(View)`
+  display: flex;
+  gap: ${responsiveHeight(2)}px;
 `;
 
 export const LogoBox = styled(View)`
@@ -31,4 +40,5 @@ export const DescriptionText = styled(Text)`
   font-size: ${responsiveWidth(5)}px;
   font-family: GmarketSansTTFMedium;
   text-align: center;
+  color: ${blackColor};
 `;
