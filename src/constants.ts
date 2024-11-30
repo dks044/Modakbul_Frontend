@@ -4,6 +4,8 @@ export const subBrandColor: string = '#f2e6d5';
 
 export const subBrandColor2: string = '#d9bfad';
 
+export const subBrandColor3: string = '#EB791E';
+
 export const blackColor: string = '#333333';
 
 export const whiteColor: string = '#F2F2F2';

@@ -17,6 +17,7 @@ interface ButtonProps {
   disabled?: boolean;
   isLoading?: boolean;
   buttonColor?: string;
+  textColor?: string;
 }
 
 const Button = ({
@@ -26,6 +27,7 @@ const Button = ({
   disabled,
   isLoading,
   buttonColor,
+  textColor,
 }: ButtonProps) => {
   return (
     <StyledButton
@@ -33,7 +35,7 @@ const Button = ({
       onPress={onPress}
       disabled={disabled}
       buttonColor={buttonColor ? buttonColor : subBrandColor}
-      textColor={fontColor}
+      textColor={textColor ? textColor : fontColor}
       mode="contained"
       labelStyle={{fontFamily: `${defaultFont}`}}
       loading={isLoading}>
