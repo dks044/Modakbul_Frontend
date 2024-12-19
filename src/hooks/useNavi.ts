@@ -3,6 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 
 type RootStackParam = {
   Home: undefined;
+  Login: undefined;
 };
 
 export const useNavi = () => {
