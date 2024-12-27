@@ -41,7 +41,10 @@ const LoginDialog = ({show, onClose}: LoginDialogProps) => {
           title="이메일 로그인"
           buttonColor={subBrandColor3}
           textColor={whiteColor}
-          onPress={() => navigation.replace('Login')}
+          onPress={() => {
+            navigation.navigate('Login');
+            onClose();
+          }}
         />
       </View>
     ),

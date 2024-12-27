@@ -1,35 +1,27 @@
+import {subBrandColor2, subBrandColor3} from '@/constants';
+import {responsiveWidth} from '@/utils/responsive';
 import React from 'react';
-import {TextInput, TextInputProps} from 'react-native-paper';
-import {Controller, Control} from 'react-hook-form';
+import {TextInput} from 'react-native-paper';
 
-interface CustomInputProps extends TextInputProps {
-  control: Control;
-  name: string;
-  error?: boolean;
+interface CustomInputProps {
+  value: string;
+  placeholder?: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
 }
-
-const CustomInput: React.FC<CustomInputProps> = ({
-  control,
-  name,
-  error,
-  ...rest
-}) => {
+const CustomInput = ({value, placeholder, setValue}: CustomInputProps) => {
   return (
     <>
-      <Controller
-        control={control}
-        render={({field: {onChange, onBlur, value}}) => (
-          <TextInput
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-            mode="outlined"
-            {...rest}
-            error={!!error}
-          />
-        )}
-        name={name}
-        rules={{required: true}}
+      <TextInput
+        value={value}
+        onChangeText={text => setValue(text)}
+        placeholder={placeholder}
+        mode="outlined"
+        style={{
+          backgroundColor: `${subBrandColor2}`,
+        }}
+        outlineColor={subBrandColor2}
+        activeOutlineColor={subBrandColor3}
+        outlineStyle={{borderRadius: responsiveWidth(3)}}
       />
     </>
   );

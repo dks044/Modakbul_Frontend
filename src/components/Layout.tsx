@@ -15,7 +15,7 @@ const Layout = ({AppbarHeaderName, children}: LayoutProps) => {
   return (
     <LayoutWrapper>
       <Appbar.Header style={{backgroundColor: `${brandColor}`}}>
-        <Appbar.BackAction onPress={() => navigation.goBack()} />
+        <Appbar.BackAction onPress={() => console.log(navigation.goBack())} />
         <Appbar.Content
           title={AppbarHeaderName}
           titleStyle={{fontFamily: `${defaultFont}`}}

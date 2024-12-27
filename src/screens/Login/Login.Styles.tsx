@@ -2,7 +2,7 @@ import LottieView from 'lottie-react-native';
 import {View} from 'react-native';
 import styled from 'styled-components/native';
 
-export const LoginSection = styled(View)`
+export const LoginWrapper = styled(View)`
   flex: 1;
   display: flex;
   justify-content: center;
