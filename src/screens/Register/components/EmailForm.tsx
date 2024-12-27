@@ -1,19 +1,38 @@
 import React from 'react';
-import {EmailFormWrapper, TitleText} from '../Register.Styles';
+import {EmailFormWrapper, SubtitleText, TitleText} from '../Register.Styles';
 
 import Margin from '@/components/Margin';
 import CustomInput from '@/components/CustomInput';
 import ErrorRegaxMessage from '@/components/ErrorRegaxMessage';
-import {emailRegax} from '@/constants';
+import {emailRegax, subBrandColor} from '@/constants';
+import Button from '@/components/Button';
+import {useValidateRegax} from '../hooks/useValidateRegax';
+import useEmailForm from '../hooks/useEmailForm';
 
 interface EmailFormProps {
   email: string;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
+  progress: number;
+  setProgress: React.Dispatch<React.SetStateAction<number>>;
 }
-const EmailForm = ({email, setEmail}: EmailFormProps) => {
+const EmailForm = ({
+  email,
+  setEmail,
+  progress,
+  setProgress,
+}: EmailFormProps) => {
+  const isEmailValid = useValidateRegax(email, emailRegax)();
+  const {handleSendMail, isLoading} = useEmailForm(
+    email,
+    progress,
+    setProgress,
+  );
+
   return (
     <EmailFormWrapper>
       <TitleText>이메일을 입력해주세요.</TitleText>
+      <Margin height={2} />
+      <SubtitleText>입력한 이메일 주소로 인증코드를 발송합니다.</SubtitleText>
       <Margin height={5} />
       <CustomInput
         value={email}
@@ -24,6 +43,15 @@ const EmailForm = ({email, setEmail}: EmailFormProps) => {
         value={email}
         regax={emailRegax}
         errorMessage="올바른 이메일을 입력해주세요"
+      />
+      <Margin height={2} />
+      <Button
+        icon="email"
+        title="다음단계"
+        buttonColor={subBrandColor}
+        disabled={!isEmailValid || isLoading}
+        onPress={handleSendMail}
+        isLoading={isLoading}
       />
     </EmailFormWrapper>
   );

@@ -8,6 +8,10 @@ export const subBrandColor3: string = '#EB791E';
 
 export const blackColor: string = '#333333';
 
+export const warnColor: string = '#e64721';
+
+export const greyColor: string = '#7A7A7A';
+
 export const whiteColor: string = '#F2F2F2';
 
 export const fontColor: string = '#4B3C28'; //다크 브라운

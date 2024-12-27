@@ -7,8 +7,11 @@ import Home from './src/screens/Home/Home';
 import Login from './src/screens/Login/Login';
 import SplashScreen from './src/components/SplashScreen';
 import Register from './src/screens/Register/Register';
+import Test from './src/screens/Test/TestScreen';
 import {StatusBar} from 'react-native';
 import {Provider as PaperProvider} from 'react-native-paper';
+import Toast from 'react-native-toast-message';
+import CustaomToastConfig from './src/components/ToastConfig';
 
 const Stack = createNativeStackNavigator();
 const queryClient = new QueryClient();
@@ -49,8 +52,14 @@ const App = () => {
               name="Register"
               component={Register}
             />
+            <Stack.Screen
+              options={{headerShown: false}}
+              name="Test"
+              component={Test}
+            />
           </Stack.Navigator>
         </NavigationContainer>
+        <Toast config={CustaomToastConfig} />
       </QueryClientProvider>
     </PaperProvider>
   );

@@ -16,7 +16,11 @@ const ErrorRegaxMessage = ({
   const isRegaxValid = useValidateRegax(value, regax)();
 
   return (
-    <>{value.length > 0 && !isRegaxValid && <Text>{errorMessage}</Text>}</>
+    <>
+      {value.length > 0 && !isRegaxValid && (
+        <Text style={{color: 'red'}}>{errorMessage}</Text>
+      )}
+    </>
   );
 };
 
