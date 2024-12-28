@@ -7,14 +7,15 @@ interface CustomInputProps {
   value: string;
   placeholder?: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  width?: number;
 }
-const CustomInput = ({value, placeholder, setValue}: CustomInputProps) => {
+const CustomInput = ({...props}: CustomInputProps) => {
   return (
     <>
       <TextInput
-        value={value}
-        onChangeText={text => setValue(text)}
-        placeholder={placeholder}
+        value={props.value}
+        onChangeText={text => props.setValue(text)}
+        placeholder={props.placeholder}
         mode="outlined"
         style={{
           backgroundColor: `${subBrandColor2}`,

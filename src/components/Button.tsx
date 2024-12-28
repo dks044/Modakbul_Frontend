@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 
 const StyledButton = styled(CustomButton)`
   width: 100%;
-  height: ${responsiveHeight(5)}px;
+  height: ${responsiveHeight(5)};
   border-radius: ${responsiveWidth(6)}px;
   font-family: GmarketSansTTFMedium;
 `;

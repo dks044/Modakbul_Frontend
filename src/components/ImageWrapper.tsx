@@ -13,8 +13,8 @@ interface ImageContainerProps {
   width: number;
 }
 const ImageContainer = styled(View)<ImageContainerProps>`
-  height: ${props => responsiveHeight(props.height || 10)}px;
-  width: ${props => responsiveWidth(props.width || 10)}px;
+  height: ${props => responsiveHeight(props.height || 10)};
+  width: ${props => responsiveWidth(props.width || 10)};
   justify-content: center;
   align-items: center;
   border-radius: ${responsiveWidth(6)}px;

@@ -1,6 +1,8 @@
 import React from 'react';
 import {TextInput, TextInputProps} from 'react-native-paper';
 import {Controller, Control} from 'react-hook-form';
+import {subBrandColor2, subBrandColor3} from '@/constants';
+import {responsiveWidth} from '@/utils/responsive';
 
 interface FormInputProps extends TextInputProps {
   control: Control;
@@ -26,6 +28,12 @@ const FormInput: React.FC<FormInputProps> = ({
             mode="outlined"
             {...rest}
             error={!!error}
+            style={{
+              backgroundColor: `${subBrandColor2}`,
+            }}
+            outlineColor={subBrandColor2}
+            activeOutlineColor={subBrandColor3}
+            outlineStyle={{borderRadius: responsiveWidth(3)}}
           />
         )}
         name={name}

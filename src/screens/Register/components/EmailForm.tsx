@@ -4,7 +4,7 @@ import {EmailFormWrapper, SubtitleText, TitleText} from '../Register.Styles';
 import Margin from '@/components/Margin';
 import CustomInput from '@/components/CustomInput';
 import ErrorRegaxMessage from '@/components/ErrorRegaxMessage';
-import {emailRegax, subBrandColor} from '@/constants';
+import {blackColor, emailRegax, subBrandColor} from '@/constants';
 import Button from '@/components/Button';
 import {useValidateRegax} from '../hooks/useValidateRegax';
 import useEmailForm from '../hooks/useEmailForm';
@@ -52,6 +52,14 @@ const EmailForm = ({
         disabled={!isEmailValid || isLoading}
         onPress={handleSendMail}
         isLoading={isLoading}
+      />
+      {/* Test */}
+      <Margin height={2} />
+      <Button
+        title="테스트용 다음버튼"
+        buttonColor={blackColor}
+        textColor="white"
+        onPress={() => setProgress(progress + 0.3)}
       />
     </EmailFormWrapper>
   );

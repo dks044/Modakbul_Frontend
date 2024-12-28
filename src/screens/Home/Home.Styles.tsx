@@ -10,9 +10,9 @@ export const HomeWrapper = styled(SafeAreaView)`
   flex-direction: column;
   justify-content: space-around;
   background-color: ${brandColor};
-  padding-top: ${responsiveHeight(1)}px;
-  padding-left: ${responsiveWidth(5)}px;
-  padding-right: ${responsiveWidth(5)}px;
+  padding-top: ${responsiveHeight(1)};
+  padding-left: ${responsiveWidth(5)};
+  padding-right: ${responsiveWidth(5)};
 `;
 
 export const HomeSection = styled(View)`
