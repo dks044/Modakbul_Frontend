@@ -1,6 +1,5 @@
 import React from 'react';
 import {EmailFormWrapper, SubtitleText, TitleText} from '../Register.Styles';
-
 import Margin from '@/components/Margin';
 import CustomInput from '@/components/CustomInput';
 import ErrorRegaxMessage from '@/components/ErrorRegaxMessage';
