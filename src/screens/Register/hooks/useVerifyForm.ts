@@ -9,15 +9,21 @@ const useVerifyForm = () => {
     verrifyCode: string,
     progress: number,
     setProgress: React.Dispatch<React.SetStateAction<number>>,
+    email: string,
   ) => {
     setIsLoading(true);
     try {
       const response = await axiosInstance.post('/auth/verifycode', {
-        verrifyCode,
+        email,
+        emailCode: verrifyCode,
       });
-      if (response) {
+      if (response.data) {
+        console.log('성공! => ', progress);
         setProgress(progress + 0.3);
+        showToast('success', '이메일 인증을 성공했어요!');
+        return;
       }
+      console.log(response);
     } catch (error) {
       console.log(error);
       showToast('error', '이메일을 확인해주세요.');

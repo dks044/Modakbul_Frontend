@@ -15,8 +15,8 @@ const useEmailForm = (
       showToast('success', '이메일에 인증코드를 보냈어요!');
 
       setProgress(progress + 0.3);
-      //TODO: 필요시 에러 관련 처리
     } catch (error) {
+      showToast('error', '이미 인증코드를 보냈어요, 메일함을 확인해주세요.');
       console.log(error);
     }
   };

@@ -1,28 +1,37 @@
 import {brandColor} from '@/constants';
 import {responsiveWidth} from '@/utils/responsive';
-import React from 'react';
-import {TextInput} from 'react-native-paper';
+import React, {useRef} from 'react';
+import {TextInput as PaperTextInput} from 'react-native-paper';
 import {
   CodeBox,
   CodeText,
   CodeWrapper,
   VerrifyCodeInputWrapper,
 } from '../../Register.Styles';
+import {TextInput} from 'react-native';
 
 interface VerrifyCodeInputProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 const VerrifyCodeInput = ({...props}: VerrifyCodeInputProps) => {
+  const inputRef = useRef<TextInput>(null);
+
+  const handleCodeBoxPress = () => {
+    inputRef.current?.focus();
+  };
+
   return (
     <VerrifyCodeInputWrapper>
-      <TextInput
+      <PaperTextInput
+        ref={inputRef}
         value={props.value}
         mode="outlined"
         style={{
           backgroundColor: brandColor,
           color: brandColor,
           width: '100%',
+          height: '100%',
           position: 'absolute',
         }}
         outlineColor={brandColor}
@@ -37,18 +46,11 @@ const VerrifyCodeInput = ({...props}: VerrifyCodeInputProps) => {
         maxLength={4}
       />
       <CodeWrapper>
-        <CodeBox>
-          <CodeText>{props.value[0] ? props.value[0] : ''}</CodeText>
-        </CodeBox>
-        <CodeBox>
-          <CodeText>{props.value[1] ? props.value[1] : ''}</CodeText>
-        </CodeBox>
-        <CodeBox>
-          <CodeText>{props.value[2] ? props.value[2] : ''}</CodeText>
-        </CodeBox>
-        <CodeBox>
-          <CodeText>{props.value[3] ? props.value[3] : ''}</CodeText>
-        </CodeBox>
+        {[0, 1, 2, 3].map(index => (
+          <CodeBox key={index} onTouchEnd={handleCodeBoxPress}>
+            <CodeText>{props.value[index] ? props.value[index] : ''}</CodeText>
+          </CodeBox>
+        ))}
       </CodeWrapper>
     </VerrifyCodeInputWrapper>
   );

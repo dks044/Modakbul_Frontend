@@ -8,13 +8,19 @@ import Margin from '@/components/Margin';
 import VerrifyCodeInput from './input/VerrifyCodeInput';
 import Button from '@/components/Button';
 import {subBrandColor} from '@/constants';
+import useVerifyForm from '../hooks/useVerifyForm';
 
 interface VerrifyCodeFormProps {
   verrifyCode: string;
   setVerrifyCode: React.Dispatch<React.SetStateAction<string>>;
+  progress: number;
+  setProgress: React.Dispatch<React.SetStateAction<number>>;
+  email: string;
 }
 
 const VerrifyCodeForm = ({...props}: VerrifyCodeFormProps) => {
+  const {handleVerifyCode, isLoading} = useVerifyForm();
+
   return (
     <VerrifyCodeFormWrapper>
       <TitleText>인증코드를 입력해주세요.</TitleText>
@@ -22,18 +28,27 @@ const VerrifyCodeForm = ({...props}: VerrifyCodeFormProps) => {
       <SubtitleText>
         발송된 이메일을 확인하여 4자리 코드를 입력해주세요
       </SubtitleText>
+      <SubtitleText>(3분안에 입력하셔야 해요.)</SubtitleText>
       <Margin height={2} />
       <VerrifyCodeInput
         value={props.verrifyCode}
         setValue={props.setVerrifyCode}
       />
       <Margin height={2} />
-      {/* TODO: 다음 비즈니스 로직해야 함 */}
       <Button
         icon="send"
         title="다음단계"
         buttonColor={subBrandColor}
-        disabled={props.verrifyCode.length < 4}
+        disabled={props.verrifyCode.length < 4 || isLoading}
+        onPress={() =>
+          handleVerifyCode(
+            props.verrifyCode,
+            props.progress,
+            props.setProgress,
+            props.email,
+          )
+        }
+        isLoading={isLoading}
       />
     </VerrifyCodeFormWrapper>
   );
